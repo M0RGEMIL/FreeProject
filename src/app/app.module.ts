@@ -15,13 +15,16 @@ import { IndexComponent } from './index/index.component';
 import { UnitComponent } from './unit/unit.component';
 import { ContactComponent } from './contact/contact.component';
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
+import { TodolistComponent } from './todolist/todolist.component';
+import { ListElementComponent } from './list-element/list-element.component';
 
 const appRoutes: Routes = [
 	{ path: 'chat', canActivate: [AuthGuard], component: ChatComponent },
 	{ path: 'auth', component: AuthComponent },
 	{ path: 'unitInfos/:id', canActivate: [AuthGuard], component: UnitComponent },
 	{ path: 'unitGlobalPage/:id', component: UnitComponent },
-  { path: 'contact', canActivate: [AuthGuard], component: ContactComponent },
+	{ path: 'contact', canActivate: [AuthGuard], component: ContactComponent },
+	{ path: 'todolist', canActivate: [AuthGuard], component: TodolistComponent },
 	{ path: 'not-found', component: FourOhFourComponent },
   { path: '', component: IndexComponent },
 	{ path: '**', redirectTo: 'not-found' }
@@ -36,7 +39,9 @@ const appRoutes: Routes = [
     IndexComponent,
     UnitComponent,
     ContactComponent,
-    FourOhFourComponent
+    FourOhFourComponent,
+    TodolistComponent,
+    ListElementComponent
   ],
   imports: [
     BrowserModule,
