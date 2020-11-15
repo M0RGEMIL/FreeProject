@@ -21,11 +21,6 @@ export class AppComponent {
   });
 
 	constructor(private authService: AuthService) {
-    setTimeout(
-      () => {
-        this.isAuth = true;
-      }, 4000
-    );
   }
 
 	ngOnInit() {
