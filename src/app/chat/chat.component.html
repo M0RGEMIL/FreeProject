@@ -6,20 +6,16 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <h2>Mes appareils</h2>
-			<p>Mis à jour : {{ lastUpdate | async | date: 'yMMMMEEEEd' | uppercase }}</p>
+      <h2>Just Chatting</h2>
       <ul class="list-group">
-        <app-appareil  *ngFor="let appareil of appareils"
-                       [appareilName]="appareil.name"
-                       [appareilStatus]="appareil.status"></app-appareil>
+        <app-message  *ngFor="let message of messages"
+											[author]="message.author"
+											[reaction]="message.reaction"
+											[created_at]="message.created_at"
+                      [content]="message.content"></app-message>
       </ul>
-      <button class="btn btn-success"
-              [disabled]="!isAuth"
-              (click)="onAllumer()">Tout allumer</button>
     </div>
   </div>
 </div>
-
-  <app-chat></app-chat>
 
 </html>
