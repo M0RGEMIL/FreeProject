@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { MessageComponent } from './message/message.component';
 import { ChatComponent } from './chat/chat.component';
 import { AuthService } from './services/auth.service';
+import { AuthGuard } from './services/auth-guard.service';
 import { UnitService } from './services/unit.service';
 import { AuthComponent } from './auth/auth.component';
 import { Routes, RouterModule } from '@angular/router';
@@ -16,11 +17,11 @@ import { ContactComponent } from './contact/contact.component';
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 
 const appRoutes: Routes = [
-	{ path: 'chat', component: ChatComponent },
+	{ path: 'chat', canActivate: [AuthGuard], component: ChatComponent },
 	{ path: 'auth', component: AuthComponent },
-	{ path: 'unitInfos/:id', component: UnitComponent },
+	{ path: 'unitInfos/:id', canActivate: [AuthGuard], component: UnitComponent },
 	{ path: 'unitGlobalPage/:id', component: UnitComponent },
-  { path: 'contact', component: ContactComponent },
+  { path: 'contact', canActivate: [AuthGuard], component: ContactComponent },
 	{ path: 'not-found', component: FourOhFourComponent },
   { path: '', component: IndexComponent },
 	{ path: '**', redirectTo: 'not-found' }
@@ -45,7 +46,8 @@ const appRoutes: Routes = [
   ],
 	providers: [
 		AuthService,
-		UnitService
+		UnitService,
+		AuthGuard,
 	],
   bootstrap: [AppComponent]
 })
