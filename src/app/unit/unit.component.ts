@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UnitService } from '../services/unit.service';
+import { Routes, Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-unit',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UnitComponent implements OnInit {
 
-  constructor() { }
+	name: string = 'Appareil';
+	status: string = 'Statut';
 
-  ngOnInit(): void {
-  }
+  constructor(private unitService: UnitService, private route: ActivatedRoute) {}
+
+	ngOnInit() {
+	    const id = this.route.snapshot.params['id'];
+			this.name = this.unitService.getUnitById(+id).name;
+	 		this.status = this.unitService.getUnitById(+id).status;
+	}
 
 }
