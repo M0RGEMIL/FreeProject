@@ -7,7 +7,7 @@ import { AppareilComponent } from './appareil/appareil.component';
 import { FormsModule } from '@angular/forms';
 import { MessageComponent } from './message/message.component';
 import { ChatComponent } from './chat/chat.component';
-
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -21,7 +21,9 @@ import { ChatComponent } from './chat/chat.component';
     AppRoutingModule,
 		FormsModule
   ],
-  providers: [],
+	providers: [
+		AuthService
+	],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

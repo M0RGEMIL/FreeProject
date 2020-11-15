@@ -1,0 +1,10 @@
+.message {
+	width: 40%;
+	margin-left: 0.2%;
+}
+
+li {
+	border: solid blue;
+	padding: 0.2%;
+	text-decoration: none;
+}

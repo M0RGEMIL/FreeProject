@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -17,22 +18,7 @@ export class AppComponent {
     );
   });
 
-	appareils = [
-	    {
-	      name: 'Machine à laver',
-	      status: 'éteint'
-	    },
-	    {
-	      name: 'Frigo',
-	      status: 'allumé'
-	    },
-	    {
-	      name: 'Ordinateur',
-	      status: 'éteint'
-	    }
-	  ];
-
-	constructor() {
+	constructor(private authService: AuthService) {
     setTimeout(
       () => {
         this.isAuth = true;
@@ -40,7 +26,4 @@ export class AppComponent {
     );
   }
 
-	onAllumer() {
-		console.log('On allume tout !');
-	}
 }
