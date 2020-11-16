@@ -9,6 +9,7 @@ import { ChatComponent } from './chat/chat.component';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './services/auth-guard.service';
 import { UnitService } from './services/unit.service';
+import { TodoService } from './services/todo.service';
 import { AuthComponent } from './auth/auth.component';
 import { Routes, RouterModule } from '@angular/router';
 import { IndexComponent } from './index/index.component';
@@ -53,6 +54,7 @@ const appRoutes: Routes = [
 		AuthService,
 		UnitService,
 		AuthGuard,
+		TodoService,
 	],
   bootstrap: [AppComponent]
 })
