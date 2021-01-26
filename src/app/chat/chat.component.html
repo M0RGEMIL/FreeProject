@@ -12,7 +12,7 @@
       	</ul>
 			</div>
 			<input type="text" class="form-control" [(ngModel)]="currentMessage">
-			<button [disabled]="!isAuth" >Envoyer</button>
+			<button [disabled]="!isAuth" (click)="addMessage()">Envoyer</button>
 			<mat-slider min="1" max="100" step="1" value="1"></mat-slider>
     </div>
   </div>

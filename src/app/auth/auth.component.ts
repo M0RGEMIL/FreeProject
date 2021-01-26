@@ -9,6 +9,7 @@ import { Routes, Router } from '@angular/router';
 })
 export class AuthComponent implements OnInit {
 
+	name: string;
 	authStatus: boolean;
 
   constructor(private authService: AuthService, private router: Router) { }
@@ -21,6 +22,7 @@ export class AuthComponent implements OnInit {
     this.authService.signIn().then(
       () => {
         console.log('Sign in successful!');
+				this.authService.setUser(this.name);
         this.authStatus = this.authService.isAuth;
 				this.router.navigate(['chat']);
 			}
@@ -31,6 +33,4 @@ export class AuthComponent implements OnInit {
     this.authService.signOut();
     this.authStatus = this.authService.isAuth;
   }
-
-
 }

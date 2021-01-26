@@ -1,6 +1,12 @@
 export class AuthService {
 
 	isAuth = false;
+	user = {
+			name: null,
+			id: null,
+			email: null,
+			password: null
+		};
 
 	signIn() {
     return new Promise(
@@ -19,10 +25,12 @@ export class AuthService {
     this.isAuth = false;
   }
 
-	user = {
-		name: null,
-		id: null,
-		email: null,
-		password: null
-	};
+	setUser(name) {
+		this.user.name = name;
+	}
+
+	getUser() {
+		return(this.user);
+	}
+
 }

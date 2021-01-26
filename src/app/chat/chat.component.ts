@@ -9,45 +9,47 @@ import { MessageComponent } from '../message/message.component';
 })
 export class ChatComponent implements OnInit {
 
-	isAuth = false;
+	isAuth = true;
 	date = new Date();
 	currentMessage: string;
-	user : string;
+	user : any;
 
 	messages = [
 	    {
-	      author: 'Augustin',
+	      author: { name: 'Augustin'},
 	      content: 'premier test',
-				reaction: '1',
+				reaction: 1,
 				created_at: this.date,
 				origin: 'test'
 	    },
 			{
-	      author: 'Augustin',
+	      author: { name: 'Augustin'},
 	      content: 'deuxieme test',
-				reaction: '1',
+				reaction: 1,
 				created_at: this.date,
 				origin: 'test'
 	    }
 	  ];
 
-  constructor(private authService: AuthService) {
-	user = JSON.parse(localStorage.getItem("user"));
-}
+  constructor(private authService: AuthService) {}
 
 	ngOnInit() {
+		console.log(this.authService.getUser());
 		this.user = this.authService.user;
 	}
 
-	addMessage(message) {
-		let msg = new MessageComponent();
-		msg.author = this.user;
-		msg.content = this.currentMessage;
-		this.currentMessage = "";
-		msg.reaction = 0;
-		msg.created_at = new Date();
-		msg.origin = "test";
-		this.messages.push(msg);
+	addMessage() {
+		let msg = {
+			author : this.user,
+			content : this.currentMessage,
+			reaction : 0,
+			created_at : new Date(),
+			origin : "test"
+		}
+		if (this.currentMessage != "") {
+			this.messages.push(msg);
+			this.currentMessage = "";
+		}
 	}
 
 }
