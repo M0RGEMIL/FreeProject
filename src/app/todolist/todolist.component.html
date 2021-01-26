@@ -3,6 +3,10 @@
                    [appareilName]="appareil.name"
                    [appareilStatus]="appareil.status"
                    [index]="i"></app-list-element>
+		<li class="list-group-item todo">
+			<input type="text" class="form-control" [(ngModel)]="task">
+			<button (click)="newTask()">+</button>
+		</li>
 </ul>
 <!-- <button class="btn btn-success" (click)="onAllumer()">Tout allumer</button> -->
 <!-- <button class="btn btn-danger" (click)="onEteindre()">Tout éteindre</button> -->

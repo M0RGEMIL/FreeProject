@@ -9,7 +9,7 @@ import { TodoService } from '../services/todo.service';
 export class ListElementComponent implements OnInit {
 
 	@Input() appareilName: string;
-	@Input() appareilStatus: string;
+	// @Input() appareilStatus: string;
 	@Input() index: number;
 
   constructor(private appareilService: TodoService) { }
@@ -17,21 +17,25 @@ export class ListElementComponent implements OnInit {
   ngOnInit(): void {
   }
 
-	getStatus () {
-		return this.appareilStatus;
-	}
+	// getStatus () {
+	// 	return this.appareilStatus;
+	// }
+	//
+	// getColor () {
+	// 	if (this.appareilStatus == "check")
+	// 		return ("green");
+	// }
+	//
+	// onSwitch() {
+	//     if(this.appareilStatus === 'check') {
+	//       this.appareilService.switchOffOne(this.index);
+	//     } else if(this.appareilStatus === 'éteint') {
+	//       this.appareilService.switchOnOne(this.index);
+	//     }
+	// }
 
-	getColor () {
-		if (this.appareilStatus == "check")
-			return ("green");
-	}
-
-	onSwitch() {
-	    if(this.appareilStatus === 'check') {
-	      this.appareilService.switchOffOne(this.index);
-	    } else if(this.appareilStatus === 'éteint') {
-	      this.appareilService.switchOnOne(this.index);
-	    }
-	}
+deleteTask() {
+	 this.appareilService.deleteTask(this.index);
+}
 
 }

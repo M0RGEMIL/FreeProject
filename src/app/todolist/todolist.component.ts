@@ -9,6 +9,7 @@ import { Subscription } from 'rxjs/Subscription';
 })
 export class TodolistComponent implements OnInit, OnDestroy  {
 
+	task: string;
 	appareils: any[];
   appareilSubscription: Subscription;
 
@@ -32,20 +33,25 @@ export class TodolistComponent implements OnInit, OnDestroy  {
     this.appareilService.emitAppareilSubject();
   }
 
-  onAllumer() {
-    this.appareilService.switchOnAll();
-  }
-
-  onEteindre() {
-    if(confirm('Etes-vous sûr de vouloir éteindre tous vos appareils ?')) {
-      this.appareilService.switchOffAll();
-    } else {
-      return null;
-    }
-  }
+  // onAllumer() {
+  //   this.appareilService.switchOnAll();
+  // }
+	//
+  // onEteindre() {
+  //   if(confirm('Etes-vous sûr de vouloir éteindre tous vos appareils ?')) {
+  //     this.appareilService.switchOffAll();
+  //   } else {
+  //     return null;
+  //   }
+  // }
 
   ngOnDestroy() {
     this.appareilSubscription.unsubscribe();
   }
+
+	newTask()	{
+		this.appareilService.newTask(this.task);
+		this.task = "";
+	}
 
 }

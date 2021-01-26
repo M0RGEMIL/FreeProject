@@ -4,51 +4,89 @@ export class TodoService {
 
 	appareilsSubject = new Subject<any[]>();
 
-	private appareils = [
+	private tasks = [
 		{
 			id: 1,
-			name: 'Trier la liste',
-			status: 'éteint'
+			name: 'Trier la liste'
 		},
 		{
 			id: 2,
-			name: 'Lier la database',
-			status: 'check'
+			name: 'Lier la database'
 		},
 		{
 			id: 3,
-			name: 'tester le projet',
-			status: 'éteint'
+			name: 'tester le projet'
+		},
+		{
+			id: 4,
+			name: 'debugger'
+		},
+		{
+			id: 5,
+			name: 'debugger'
+		},
+		{
+			id: 6,
+			name: 'debugger'
+		},
+		{
+			id: 7,
+			name: 'debugger'
+		},
+		{
+			id: 8,
+			name: 'debugger'
+		},
+		{
+			id: 9,
+			name: 'debugger'
 		}
 	];
 
 	emitAppareilSubject() {
-		this.appareilsSubject.next(this.appareils.slice());
+		this.appareilsSubject.next(this.tasks.slice());
 	}
 
-
-	switchOnAll() {
-		for(let appareil of this.appareils) {
-			appareil.status = 'check';
-		}
-		this.emitAppareilSubject();
-	}
-
-	switchOffAll() {
-		for(let appareil of this.appareils) {
-			appareil.status = 'éteint';
+	newTask(newone) {
+		let nexttask = {
+			id: this.tasks.length + 1,
+			name: newone
+		};
+		if(newone != "") {
+			this.tasks.push(nexttask);
 			this.emitAppareilSubject();
 		}
 	}
 
-	switchOnOne(i: number) {
-		this.appareils[i].status = 'check';
-		this.emitAppareilSubject();
+	// switchOnAll() {
+	// 	for(let appareil of this.tasks) {
+	// 		appareil.status = 'check';
+	// 	}
+	// 	this.emitAppareilSubject();
+	// }
+	//
+	// switchOffAll() {
+	// 	for(let appareil of this.tasks) {
+	// 		appareil.status = 'éteint';
+	// 		this.emitAppareilSubject();
+	// 	}
+	// }
+	//
+	// switchOnOne(i: number) {
+	// 	this.tasks[i].status = 'check';
+	// 	this.emitAppareilSubject();
+	// }
+	//
+	// switchOffOne(i: number) {
+	// 	this.tasks[i].status = 'éteint';
+	// 	this.emitAppareilSubject();
+	// }
+
+	deleteTask(i: number) {
+		if (i > -1) {
+			this.tasks.splice(i, 1);
+			this.emitAppareilSubject();
+		}
 	}
 
-	switchOffOne(i: number) {
-		this.appareils[i].status = 'éteint';
-		this.emitAppareilSubject();
-
-	}
 }
