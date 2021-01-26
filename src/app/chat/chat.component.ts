@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
+import { MessageComponent } from '../message/message.component';
 
 @Component({
   selector: 'app-chat',
@@ -11,7 +12,7 @@ export class ChatComponent implements OnInit {
 	isAuth = false;
 	date = new Date();
 	currentMessage: string;
-	user: any;
+	user : string;
 
 	messages = [
 	    {
@@ -30,10 +31,23 @@ export class ChatComponent implements OnInit {
 	    }
 	  ];
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService) {
+	user = JSON.parse(localStorage.getItem("user"));
+}
 
 	ngOnInit() {
 		this.user = this.authService.user;
+	}
+
+	addMessage(message) {
+		let msg = new MessageComponent();
+		msg.author = this.user;
+		msg.content = this.currentMessage;
+		this.currentMessage = "";
+		msg.reaction = 0;
+		msg.created_at = new Date();
+		msg.origin = "test";
+		this.messages.push(msg);
 	}
 
 }

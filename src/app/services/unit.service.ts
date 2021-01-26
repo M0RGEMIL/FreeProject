@@ -3,13 +3,13 @@ export class UnitService {
 	units = [
 	    {
 	      id: 1,
-	      name: 'Machine à laver',
+	      name: 'Trier les données',
 	      status: 'éteint'
 	    },
 	    {
 	      id: 2,
 	      name: 'Frigo',
-	      status: 'allumé'
+	      status: 'check'
 	    },
 	    {
 	      id: 3,

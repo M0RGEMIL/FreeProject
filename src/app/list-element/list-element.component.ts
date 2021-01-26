@@ -22,14 +22,12 @@ export class ListElementComponent implements OnInit {
 	}
 
 	getColor () {
-		if (this.appareilStatus == "éteint")
-			return ("red");
-		else
+		if (this.appareilStatus == "check")
 			return ("green");
 	}
 
 	onSwitch() {
-	    if(this.appareilStatus === 'allumé') {
+	    if(this.appareilStatus === 'check') {
 	      this.appareilService.switchOffOne(this.index);
 	    } else if(this.appareilStatus === 'éteint') {
 	      this.appareilService.switchOnOne(this.index);

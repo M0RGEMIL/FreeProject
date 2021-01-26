@@ -7,17 +7,17 @@ export class TodoService {
 	private appareils = [
 		{
 			id: 1,
-			name: 'Machine à laver',
+			name: 'Trier la liste',
 			status: 'éteint'
 		},
 		{
 			id: 2,
-			name: 'Frigo',
-			status: 'allumé'
+			name: 'Lier la database',
+			status: 'check'
 		},
 		{
 			id: 3,
-			name: 'Ordinateur',
+			name: 'tester le projet',
 			status: 'éteint'
 		}
 	];
@@ -29,7 +29,7 @@ export class TodoService {
 
 	switchOnAll() {
 		for(let appareil of this.appareils) {
-			appareil.status = 'allumé';
+			appareil.status = 'check';
 		}
 		this.emitAppareilSubject();
 	}
@@ -42,7 +42,7 @@ export class TodoService {
 	}
 
 	switchOnOne(i: number) {
-		this.appareils[i].status = 'allumé';
+		this.appareils[i].status = 'check';
 		this.emitAppareilSubject();
 	}
 
