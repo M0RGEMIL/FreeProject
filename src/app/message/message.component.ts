@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class MessageComponent implements OnInit {
 
-	@Input() author: string;
+	@Input() author: any;
 	@Input() content: string;
 	@Input() reaction: number;
 	@Input() created_at: string;
