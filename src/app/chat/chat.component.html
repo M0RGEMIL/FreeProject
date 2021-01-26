@@ -1,7 +1,7 @@
 <div class="container chat">
   <div class="row">
     <div class="col-xs-12">
-			<center><h2><b><u>Messages HP</u></b></h2></center>
+			<h2><b><u>Messages HP</u></b></h2>
 			<div class="container">
       	<ul class="list-group">
         	<app-message  *ngFor="let message of messages"
@@ -13,7 +13,6 @@
 			</div>
 			<input type="text" class="form-control" [(ngModel)]="currentMessage">
 			<button [disabled]="!isAuth" (click)="addMessage()">Envoyer</button>
-			<mat-slider min="1" max="100" step="1" value="1"></mat-slider>
     </div>
   </div>
 </div>

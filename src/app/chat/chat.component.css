@@ -3,3 +3,7 @@
 	border-left: 1px solid #ccc;
 	background-color: #b6bec8;
 }
+
+ul {
+    list-style: none;
+}
