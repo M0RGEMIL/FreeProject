@@ -8,15 +8,15 @@ import { Component, OnInit } from '@angular/core';
 export class IndexComponent implements OnInit {
 
 	columnDefs = [
-	        { field: 'make' },
-	        { field: 'model' },
-	        { field: 'price' }
+	        { field: 'Nom', sortable: true, filter: true ,suppressSizeToFit: false},
+	        { field: 'Prénom', sortable: true, filter: true,suppressSizeToFit: false },
+	        { field: 'Patrouille', sortable: true, filter: true ,suppressSizeToFit: false}
 	    ];
 
 	    rowData = [
-	        { make: 'Toyota', model: 'Celica', price: 35000 },
-	        { make: 'Ford', model: 'Mondeo', price: 32000 },
-	        { make: 'Porsche', model: 'Boxter', price: 72000 }
+	        { Nom: 'Perot', Prénom: 'Lilian', Patrouille: "Bison" },
+	        { Nom: 'Aufrère', Prénom: 'Victor', Patrouille: "Aigle-Pecheur" },
+	        { Nom: 'Maillon', Prénom: 'Ludovic', Patrouille: "Cerf" }
 	    ];
 
   constructor() { }
