@@ -1,3 +1,5 @@
 <h2>{{ name }}</h2>
-<p>Statut : {{ status }}</p>
-<a routerLink="/chat">Retour à la liste</a>
+<p>{{ pageContent }}</p>
+
+<input type="text" class="form-control" [(ngModel)]="pageContent">
+<a routerLink="/">Retour à la liste</a>

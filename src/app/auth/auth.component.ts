@@ -15,22 +15,19 @@ export class AuthComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
-    this.authStatus = this.authService.isAuth;
+		let user = localStorage.getItem("user");
+    this.authStatus = (user != "");
   }
 
   onSignIn() {
-    this.authService.signIn().then(
-      () => {
-        console.log('Sign in successful!');
-				this.authService.setUser(this.name);
-        this.authStatus = this.authService.isAuth;
-				this.router.navigate(['chat']);
-			}
-    );
+    	this.authService.signIn(this.name);
+      this.authStatus = this.authService.isAuth;
+			this.router.navigate(['']);
   }
 
   onSignOut() {
     this.authService.signOut();
     this.authStatus = this.authService.isAuth;
+		localStorage.setItem('user', "");
   }
 }

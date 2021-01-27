@@ -1,4 +1,7 @@
 <h2>Authentification</h2>
 <input *ngIf="!authStatus" type="text" class="form-control" [(ngModel)]="name">
+<!-- <input *ngIf="!authStatus" type="text" class="form-control" [(ngModel)]="password"> -->
+<!-- <input *ngIf="!authStatus" type="text" class="form-control" [(ngModel)]="Firstname"> -->
+<!-- <input *ngIf="!authStatus" type="text" class="form-control" [(ngModel)]="Email"> -->
 <button class="btn btn-success" *ngIf="!authStatus" (click)="onSignIn()">Se connecter</button>
 <button class="btn btn-danger" *ngIf="authStatus" (click)="onSignOut()">Se déconnecter</button>

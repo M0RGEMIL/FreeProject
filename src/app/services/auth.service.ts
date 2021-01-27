@@ -8,25 +8,19 @@ export class AuthService {
 			password: null
 		};
 
-	signIn() {
-    return new Promise(
-      (resolve, reject) => {
-        setTimeout(
-          () => {
-            this.isAuth = true;
-            resolve(true);
-          }, 2000
-        );
-      }
-    );
+	signIn(name) {
+			this.user.name = name;
+  		localStorage.setItem('user', JSON.stringify(this.user));
   }
 
   signOut() {
     this.isAuth = false;
+		localStorage.setItem('user', "");
   }
 
 	setUser(name) {
 		this.user.name = name;
+
 	}
 
 	getUser() {

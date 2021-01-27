@@ -27,9 +27,9 @@ const appRoutes: Routes = [
 	{ path: 'unitInfos/:id', canActivate: [AuthGuard], component: UnitComponent },
 	{ path: 'unitGlobalPage/:id', component: UnitComponent },
 	{ path: 'contact', canActivate: [AuthGuard], component: ContactComponent },
-	{ path: 'todolist'/*, canActivate: [AuthGuard]*/, component: TodolistComponent },
+	{ path: 'todolist', canActivate: [AuthGuard], component: TodolistComponent },
 	{ path: 'not-found', component: FourOhFourComponent },
-  { path: '', component: IndexComponent },
+  { path: '', canActivate: [AuthGuard], component: IndexComponent },
 	{ path: '**', redirectTo: 'not-found' }
 ];
 
