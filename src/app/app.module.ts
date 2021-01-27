@@ -19,6 +19,7 @@ import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 import { TodolistComponent } from './todolist/todolist.component';
 import { ListElementComponent } from './list-element/list-element.component';
 import { MatSliderModule } from '@angular/material/slider';
+import { AgGridModule } from 'ag-grid-angular';
 
 const appRoutes: Routes = [
 	{ path: 'chat', canActivate: [AuthGuard], component: ChatComponent },
@@ -49,6 +50,7 @@ const appRoutes: Routes = [
     BrowserModule,
     AppRoutingModule,
 		FormsModule,
+		AgGridModule.withComponents([]),
 		MatSliderModule,
 		RouterModule.forRoot(appRoutes)
   ],
