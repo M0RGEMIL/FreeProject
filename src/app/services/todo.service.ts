@@ -7,39 +7,48 @@ export class TodoService {
 	private tasks = [
 		{
 			id: 1,
-			name: 'Trier la liste'
+			name: 'Trier la liste',
+			urgentStatus: 'urgent'
 		},
 		{
 			id: 2,
-			name: 'Lier la database'
+			name: 'Lier la database',
+			urgentStatus: 'hight'
 		},
 		{
 			id: 3,
-			name: 'tester le projet'
+			name: 'tester le projet',
+			urgentStatus: ''
 		},
 		{
 			id: 4,
-			name: 'debugger'
+			name: 'debugger',
+			urgentStatus: 'cool'
 		},
 		{
 			id: 5,
-			name: 'debugger'
+			name: 'debugger',
+			urgentStatus: 'cool'
 		},
 		{
 			id: 6,
-			name: 'debugger'
+			name: 'debugger',
+			urgentStatus: 'cool'
 		},
 		{
 			id: 7,
-			name: 'debugger'
+			name: 'debugger',
+			urgentStatus: 'cool'
 		},
 		{
 			id: 8,
-			name: 'debugger'
+			name: 'debugger',
+			urgentStatus: 'cool'
 		},
 		{
 			id: 9,
-			name: 'debugger'
+			name: 'debugger',
+			urgentStatus: 'cool'
 		}
 	];
 
@@ -50,7 +59,8 @@ export class TodoService {
 	newTask(newone) {
 		let nexttask = {
 			id: this.tasks.length + 1,
-			name: newone
+			name: newone,
+			urgentStatus : "normal"
 		};
 		if(newone != "") {
 			this.tasks.push(nexttask);

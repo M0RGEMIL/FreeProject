@@ -1,9 +1,22 @@
-<li class="list-group-item todo">
+<li class="list-group-item todo"
+[class.urgent]="this.urgentStatus === 'urgent'"
+[class.hight]="this.urgentStatus === 'hight'"
+[class.normal]="this.urgentStatus === ''"
+[class.cool]="this.urgentStatus === 'cool'">
 
   <h4>{{ appareilName }}</h4>
 
 	<hr>
 
 	<input type=button (click)="deleteTask()" value="Fait">
+	<input type=button (click)="updateTask()" value="Modifier">
+
+	<div id="changeStatus{{ index }}" hidden="true">
+		<input class="urgent" id="toUrgent" type=button (click)="setStatus('urgent')" value="Urgent">
+		<input class="hight" id="toHight" type=button (click)="setStatus('hight')" value="Hight">
+		<input class="normal" id="toNormal" type=button (click)="setStatus('')" value="Normal">
+		<input class="cool" id="toCool" type=button (click)="setStatus('cool')" value="Cool">
+		<input type=button (click)="updateTask()" value="Valider">
+	</div>
 
 </li>

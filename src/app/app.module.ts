@@ -20,6 +20,7 @@ import { TodolistComponent } from './todolist/todolist.component';
 import { ListElementComponent } from './list-element/list-element.component';
 import { MatSliderModule } from '@angular/material/slider';
 import { AgGridModule } from 'ag-grid-angular';
+import { TradPageComponent } from './trad-page/trad-page.component';
 
 const appRoutes: Routes = [
 	{ path: 'chat', canActivate: [AuthGuard], component: ChatComponent },
@@ -44,7 +45,8 @@ const appRoutes: Routes = [
     ContactComponent,
     FourOhFourComponent,
     TodolistComponent,
-    ListElementComponent
+    ListElementComponent,
+    TradPageComponent
   ],
   imports: [
     BrowserModule,

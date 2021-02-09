@@ -9,7 +9,7 @@ import { TodoService } from '../services/todo.service';
 export class ListElementComponent implements OnInit {
 
 	@Input() appareilName: string;
-	// @Input() appareilStatus: string;
+	@Input() urgentStatus: string;
 	@Input() index: number;
 
   constructor(private appareilService: TodoService) { }
@@ -36,6 +36,14 @@ export class ListElementComponent implements OnInit {
 
 deleteTask() {
 	 this.appareilService.deleteTask(this.index);
+}
+
+updateTask() {
+	 document.getElementById("changeStatus" + this.index).hidden = !document.getElementById("changeStatus" + this.index).hidden;
+}
+
+setStatus(status) {
+	 this.urgentStatus = status;
 }
 
 }
