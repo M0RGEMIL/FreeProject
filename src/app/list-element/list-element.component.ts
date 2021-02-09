@@ -11,6 +11,7 @@ export class ListElementComponent implements OnInit {
 	@Input() appareilName: string;
 	@Input() urgentStatus: string;
 	@Input() index: number;
+	@Input() createdAt: string;
 
   constructor(private appareilService: TodoService) { }
 

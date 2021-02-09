@@ -1,8 +1,9 @@
 <ul class="list-group">
     <app-list-element  *ngFor="let appareil of appareils; let i = index"
                    [appareilName]="appareil.name"
-                   [appareilStatus]="appareil.status"
-                   [index]="i"></app-list-element>
+									 [index]="i"
+                   [appareilStatus]="appareil.urgentStatus"
+									 [createdAt]="appareil.createdAt"></app-list-element>
 		<li class="list-group-item todo">
 			<input type="text" class="form-control" [(ngModel)]="task">
 			<button (click)="newTask()">+</button>

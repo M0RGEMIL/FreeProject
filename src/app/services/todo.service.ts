@@ -8,46 +8,55 @@ export class TodoService {
 		{
 			id: 1,
 			name: 'Trier la liste',
+			createdAt: 'Tue Feb 09 2021 18:39:44 GMT+0100',
 			urgentStatus: 'urgent'
 		},
 		{
 			id: 2,
 			name: 'Lier la database',
+			createdAt: 'Tue Feb 09 2021 18:39:44 GMT+0100',
 			urgentStatus: 'hight'
 		},
 		{
 			id: 3,
 			name: 'tester le projet',
+			createdAt: 'Tue Feb 09 2021 18:39:44 GMT+0100',
 			urgentStatus: ''
 		},
 		{
 			id: 4,
 			name: 'debugger',
+			createdAt: 'Tue Feb 09 2021 18:39:44 GMT+0100',
 			urgentStatus: 'cool'
 		},
 		{
 			id: 5,
 			name: 'debugger',
+			createdAt: 'Tue Feb 09 2021 18:39:44 GMT+0100',
 			urgentStatus: 'cool'
 		},
 		{
 			id: 6,
 			name: 'debugger',
+			createdAt: 'Tue Feb 09 2021 18:39:44 GMT+0100',
 			urgentStatus: 'cool'
 		},
 		{
 			id: 7,
 			name: 'debugger',
+			createdAt: 'Tue Feb 09 2021 18:39:44 GMT+0100',
 			urgentStatus: 'cool'
 		},
 		{
 			id: 8,
 			name: 'debugger',
+			createdAt: 'Tue Feb 09 2021 18:39:44 GMT+0100',
 			urgentStatus: 'cool'
 		},
 		{
 			id: 9,
 			name: 'debugger',
+			createdAt: 'Tue Feb 09 2021 18:39:44 GMT+0100',
 			urgentStatus: 'cool'
 		}
 	];
@@ -60,7 +69,8 @@ export class TodoService {
 		let nexttask = {
 			id: this.tasks.length + 1,
 			name: newone,
-			urgentStatus : "normal"
+			createdAt : "" + new Date(),
+			urgentStatus : ""
 		};
 		if(newone != "") {
 			this.tasks.push(nexttask);
