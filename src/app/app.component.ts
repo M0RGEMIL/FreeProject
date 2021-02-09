@@ -8,7 +8,12 @@ import { AuthService } from './services/auth.service';
 })
 export class AppComponent {
 
-	constructor() {
-  }
+	authStatus: boolean;
 
+	constructor(private authService: AuthService) { }
+
+	ngOnInit() {
+		let user = localStorage.getItem("user");
+		this.authStatus = (user != "");
+	}
 }
