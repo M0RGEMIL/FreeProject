@@ -21,6 +21,9 @@ import { ListElementComponent } from './list-element/list-element.component';
 import { MatSliderModule } from '@angular/material/slider';
 import { AgGridModule } from 'ag-grid-angular';
 import { TradPageComponent } from './trad-page/trad-page.component';
+import { CalendarComponent } from './calendar/calendar.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 const appRoutes: Routes = [
 	{ path: 'chat', canActivate: [AuthGuard], component: ChatComponent },
@@ -29,6 +32,8 @@ const appRoutes: Routes = [
 	{ path: 'unitGlobalPage/:id', component: UnitComponent },
 	{ path: 'contact', canActivate: [AuthGuard], component: ContactComponent },
 	{ path: 'todolist', canActivate: [AuthGuard], component: TodolistComponent },
+	{ path: 'traduction', component: TradPageComponent },
+	{ path: 'calendar',canActivate: [AuthGuard], component: CalendarComponent },
 	{ path: 'not-found', component: FourOhFourComponent },
   { path: '', canActivate: [AuthGuard], component: IndexComponent },
 	{ path: '**', redirectTo: 'not-found' }
@@ -46,9 +51,11 @@ const appRoutes: Routes = [
     FourOhFourComponent,
     TodolistComponent,
     ListElementComponent,
-    TradPageComponent
+    TradPageComponent,
+    CalendarComponent
   ],
   imports: [
+		HttpClientModule,
     BrowserModule,
     AppRoutingModule,
 		FormsModule,

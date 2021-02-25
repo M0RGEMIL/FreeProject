@@ -1,65 +1,76 @@
 import { Subject } from 'rxjs/Subject';
+import { Injectable } from '@angular/core';
+import { HttpClientModule, HttpParams } from '@angular/common/http';
+
+@Injectable({
+	providedIn: 'root'
+})
 
 export class TodoService {
 
 	appareilsSubject = new Subject<any[]>();
 
-	private tasks = [
-		{
-			id: 1,
-			name: 'Trier la liste',
-			createdAt: 'Tue Feb 09 2021 18:39:44 GMT+0100',
-			urgentStatus: 'urgent'
-		},
-		{
-			id: 2,
-			name: 'Lier la database',
-			createdAt: 'Tue Feb 09 2021 18:39:44 GMT+0100',
-			urgentStatus: 'hight'
-		},
-		{
-			id: 3,
-			name: 'tester le projet',
-			createdAt: 'Tue Feb 09 2021 18:39:44 GMT+0100',
-			urgentStatus: ''
-		},
-		{
-			id: 4,
-			name: 'debugger',
-			createdAt: 'Tue Feb 09 2021 18:39:44 GMT+0100',
-			urgentStatus: 'cool'
-		},
-		{
-			id: 5,
-			name: 'debugger',
-			createdAt: 'Tue Feb 09 2021 18:39:44 GMT+0100',
-			urgentStatus: 'cool'
-		},
-		{
-			id: 6,
-			name: 'debugger',
-			createdAt: 'Tue Feb 09 2021 18:39:44 GMT+0100',
-			urgentStatus: 'cool'
-		},
-		{
-			id: 7,
-			name: 'debugger',
-			createdAt: 'Tue Feb 09 2021 18:39:44 GMT+0100',
-			urgentStatus: 'cool'
-		},
-		{
-			id: 8,
-			name: 'debugger',
-			createdAt: 'Tue Feb 09 2021 18:39:44 GMT+0100',
-			urgentStatus: 'cool'
-		},
-		{
-			id: 9,
-			name: 'debugger',
-			createdAt: 'Tue Feb 09 2021 18:39:44 GMT+0100',
-			urgentStatus: 'cool'
+	constructor(private httpClient: HttpClientModule) {
+		this.getTasks();
+	}
+
+	getTasks() {
+		fetch("http://localhost:3000/api/readToDo", {
+			method: "Get",
+			headers: {
+				"Content-type": "application/json; charset=UTF-8"
+			}
+		})
+		.then(response => response.json())
+		.then(json => {
+			let newttask = {
+				id: null,
+				name: '',
+				createdAt: '',
+				urgentStatus: ''
+			};
+			for (let i = 0; i < json.length; i++) {
+				newttask = json[i].item.item;
+				newttask.id = json[i].id;
+				this.tasks.push(newttask);
+				this.emitAppareilSubject();
+			}
+		});
+	}
+
+	removeTask(id)
+	{
+		fetch("http://localhost:3000/api/toDoList/delete/" + id, {
+			method: "Delete",
+			headers: {
+				"Content-type": "application/json; charset=UTF-8"
+			}
+		})
+	}
+
+	addTask(newone) {
+		let nexttask = {
+			name: newone,
+			createdAt : "" + new Date(),
+			urgentStatus : ""
+		};
+		if(newone != "") {
+			fetch("http://localhost:3000/api/toDoList/add", {
+				method: "POST",
+				body: JSON.stringify({
+					id: "5lGySHhvWjaUpHIMuPfV",
+					task: nexttask,
+				}),
+				headers: {
+					"Content-type": "application/json; charset=UTF-8"
+				}
+			})
+			this.tasks.push(nexttask);
+			this.emitAppareilSubject();
 		}
-	];
+	}
+
+	private tasks = [];
 
 	emitAppareilSubject() {
 		this.appareilsSubject.next(this.tasks.slice());
@@ -73,37 +84,13 @@ export class TodoService {
 			urgentStatus : ""
 		};
 		if(newone != "") {
-			this.tasks.push(nexttask);
-			this.emitAppareilSubject();
+			this.addTask(newone);
 		}
 	}
 
-	// switchOnAll() {
-	// 	for(let appareil of this.tasks) {
-	// 		appareil.status = 'check';
-	// 	}
-	// 	this.emitAppareilSubject();
-	// }
-	//
-	// switchOffAll() {
-	// 	for(let appareil of this.tasks) {
-	// 		appareil.status = 'éteint';
-	// 		this.emitAppareilSubject();
-	// 	}
-	// }
-	//
-	// switchOnOne(i: number) {
-	// 	this.tasks[i].status = 'check';
-	// 	this.emitAppareilSubject();
-	// }
-	//
-	// switchOffOne(i: number) {
-	// 	this.tasks[i].status = 'éteint';
-	// 	this.emitAppareilSubject();
-	// }
-
 	deleteTask(i: number) {
 		if (i > -1) {
+			this.removeTask(this.tasks[i].id);
 			this.tasks.splice(i, 1);
 			this.emitAppareilSubject();
 		}

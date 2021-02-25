@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TradPageComponent implements OnInit {
 
+	toTranslate: string;
+	translated: string;
+
   constructor() { }
 
   ngOnInit(): void {
   }
+
+	translate()
+	{
+		this.translated = "Traduit";
+	}
 
 }
